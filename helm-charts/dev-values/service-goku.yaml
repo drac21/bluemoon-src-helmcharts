@@ -1,22 +1,22 @@
 replicaCount: 1
 app:
-  name: service-auth-v1
+  name: service-goku-v1
 Release:
-  Maintainer: service-auth-maintainer
-  name: service-auth-v1
+  Maintainer: service-goku-maintainer
+  name: service-goku-v1
 image:
-  image_name: samplerepo.onecx.com/FINACEing/service-auth:8.0.0-b14-release-r8.0.0-v1
-  repository: samplerepo.onecx.com/FINACEing/service-auth
+  image_name: samplerepo.onecx.com/FINACEing/service-goku:8.0.0-b14-release-r8.0.0-v1
+  repository: samplerepo.onecx.com/FINACEing/service-goku
   pullPolicy: Always
   tag: 0.0.1
 imagePullSecrets:
 - name: setrvice-rg
-nameOverride: service-auth
-fullnameOverride: service-auth
+nameOverride: service-goku
+fullnameOverride: service-goku
 env:
-  service_auth_v1:
+  service_goku_v1:
   - name: APP_ID
-    value: service-auth
+    value: service-goku
   - name: ABP_XML_FINACE_CODE
     value: 08
   - name: ABP_MML_CHANNEL
@@ -60,15 +60,15 @@ podAnnotations:
   sidecar.istio.io/proxyMemory: 56Mi
   sidecar.istio.io/proxyMemoryLimit: 10Mi
   sidecar.istio.io/proxyCPULimit: 20m
-  cloud.google.com/backend-config: '{"dev1": "http-dc-service-auth-v1"}'
+  cloud.google.com/backend-config: '{"dev1": "http-dc-service-goku-v1"}'
   cloud.google.com/neg: '{"ingress": true}'
 serviceAnnotations:
-  cloud.google.com/backend-config: '{"dev1": "http-dc-service-auth"}'
+  cloud.google.com/backend-config: '{"dev1": "http-dc-service-goku"}'
   cloud.google.com/neg: '{"ingress": true}'
   app.kubernetes.io/managed-by: Helm
   meta.helm.sh/release-namespace: dev1
 service:
-  name: service-auth
+  name: service-goku
   type: ClusterIP
   ports:
   - name: http
@@ -78,12 +78,12 @@ ingress:
   enabled: true
   className: ''
   annotations:
-    cloud.google.com/backend-config: '{"dev1": "http-hc-service-auth"}'
+    cloud.google.com/backend-config: '{"dev1": "http-hc-service-goku"}'
     cloud.google.com/neg: '{"ingress": true}'
   hosts:
-  - host: service-auth
+  - host: service-goku
     paths:
-    - path: /service-auth
+    - path: /service-goku
       pathType: Prefix
   tls: []
 resources:
@@ -102,7 +102,7 @@ vsconfig:
   enabled: true
   gateway: dev1/asm-gateway
   hostname: '*'
-  value: /service-auth
+  value: /service-goku
   port: 60
 backendconfig:
   enabled: true
@@ -126,7 +126,7 @@ topologySpreadConstraints:
     - key: app
       operator: In
       values:
-      - service-auth
+      - service-goku
   maxSkew: 1
   topologyKey: topology.kubernetes.io/zone
   whenUnsatisfiable: ScheduleAnyway
@@ -135,7 +135,7 @@ topologySpreadConstraints:
     - key: app
       operator: In
       values:
-      - service-auth
+      - service-goku
   maxSkew: 1
   topologyKey: kubernetes.io/hostname
   whenUnsatisfiable: ScheduleAnyway
