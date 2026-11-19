@@ -5,8 +5,8 @@ Release:
   Maintainer: service-bleach-maintainer
   name: service-bleach-v1
 image:
-  image_name: samplerepo.onecx.com/FINACEing/service-bleach:8.0.0-b14-release-r8.0.0-v1
-  repository: samplerepo.onecx.com/FINACEing/service-bleach
+  image_name: television-sr
+  repository: samplerepo.onecx.com/FINACE/service-bleach
   pullPolicy: Always
   tag: 0.0.1
 imagePullSecrets:
