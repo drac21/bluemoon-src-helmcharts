@@ -5,8 +5,8 @@ Release:
   Maintainer: service-naruto-maintainer
   name: service-naruto-v1
 image:
-  image_name: samplerepo.onecx.com/FINACEing/service-naruto:8.0.0-b14-release-r8.0.0-v1
-  repository: samplerepo.onecx.com/FINACEing/service-naruto
+  image_name: television-sr
+  repository: samplerepo.onecx.com/FINACE/service-naruto
   pullPolicy: Always
   tag: 0.0.1
 imagePullSecrets:
