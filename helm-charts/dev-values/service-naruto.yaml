@@ -1,22 +1,22 @@
 replicaCount: 1
 app:
-  name: service-upi-v1
+  name: service-naruto-v1
 Release:
-  Maintainer: service-upi-maintainer
-  name: service-upi-v1
+  Maintainer: service-naruto-maintainer
+  name: service-naruto-v1
 image:
-  image_name: samplerepo.onecx.com/FINACEing/service-upi:8.0.0-b14-release-r8.0.0-v1
-  repository: samplerepo.onecx.com/FINACEing/service-upi
+  image_name: samplerepo.onecx.com/FINACEing/service-naruto:8.0.0-b14-release-r8.0.0-v1
+  repository: samplerepo.onecx.com/FINACEing/service-naruto
   pullPolicy: Always
   tag: 0.0.1
 imagePullSecrets:
 - name: setrvice-rg
-nameOverride: service-upi
-fullnameOverride: service-upi
+nameOverride: service-naruto
+fullnameOverride: service-naruto
 env:
-  service_upi_v1:
+  service_naruto_v1:
   - name: APP_ID
-    value: service-upi
+    value: service-naruto
   - name: ABP_XML_FINACE_CODE
     value: 08
   - name: ABP_MML_CHANNEL
@@ -60,15 +60,15 @@ podAnnotations:
   sidecar.istio.io/proxyMemory: 56Mi
   sidecar.istio.io/proxyMemoryLimit: 10Mi
   sidecar.istio.io/proxyCPULimit: 20m
-  cloud.google.com/backend-config: '{"dev1": "http-dc-service-upi-v1"}'
+  cloud.google.com/backend-config: '{"dev1": "http-dc-service-naruto-v1"}'
   cloud.google.com/neg: '{"ingress": true}'
 serviceAnnotations:
-  cloud.google.com/backend-config: '{"dev1": "http-dc-service-upi"}'
+  cloud.google.com/backend-config: '{"dev1": "http-dc-service-naruto"}'
   cloud.google.com/neg: '{"ingress": true}'
   app.kubernetes.io/managed-by: Helm
   meta.helm.sh/release-namespace: dev1
 service:
-  name: service-upi
+  name: service-naruto
   type: ClusterIP
   ports:
   - name: http
@@ -78,12 +78,12 @@ ingress:
   enabled: true
   className: ''
   annotations:
-    cloud.google.com/backend-config: '{"dev1": "http-hc-service-upi"}'
+    cloud.google.com/backend-config: '{"dev1": "http-hc-service-naruto"}'
     cloud.google.com/neg: '{"ingress": true}'
   hosts:
-  - host: service-upi
+  - host: service-naruto
     paths:
-    - path: /service-upi
+    - path: /service-naruto
       pathType: Prefix
   tls: []
 resources:
@@ -102,7 +102,7 @@ vsconfig:
   enabled: true
   gateway: dev1/asm-gateway
   hostname: '*'
-  value: /service-upi
+  value: /service-naruto
   port: 60
 backendconfig:
   enabled: true
@@ -126,7 +126,7 @@ topologySpreadConstraints:
     - key: app
       operator: In
       values:
-      - service-upi
+      - service-naruto
   maxSkew: 1
   topologyKey: topology.kubernetes.io/zone
   whenUnsatisfiable: ScheduleAnyway
@@ -135,7 +135,7 @@ topologySpreadConstraints:
     - key: app
       operator: In
       values:
-      - service-upi
+      - service-naruto
   maxSkew: 1
   topologyKey: kubernetes.io/hostname
   whenUnsatisfiable: ScheduleAnyway
