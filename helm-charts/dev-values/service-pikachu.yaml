@@ -5,8 +5,8 @@ Release:
   Maintainer: service-pikachu-maintainer
   name: service-pikachu-v1
 image:
-  image_name: samplerepo.onecx.com/FINACEing/service-pikachu:8.0.0-b14-release-r8.0.0-v1
-  repository: samplerepo.onecx.com/FINACEing/service-pikachu
+  image_name: television-sr
+  repository: samplerepo.onecx.com/FINACE/service-pikachu
   pullPolicy: Always
   tag: 0.0.1
 imagePullSecrets:
