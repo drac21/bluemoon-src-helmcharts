@@ -1,0 +1,147 @@
+replicaCount: 1
+app:
+  name: service-use-v1
+Release:
+  Maintainer: service-use-maintainer
+  name: service-use-v1
+image:
+  image_name: samplerepo.onecx.com/FINACEing/service-use:8.0.0-b14-release-r8.0.0-v1
+  repository: samplerepo.onecx.com/FINACEing/service-use
+  pullPolicy: Always
+  tag: 0.0.1
+imagePullSecrets:
+- name: setrvice-rg
+nameOverride: service-use
+fullnameOverride: service-use
+env:
+  service_use_v1:
+  - name: APP_ID
+    value: service-use
+  - name: ABP_XML_FINACE_CODE
+    value: 08
+  - name: ABP_MML_CHANNEL
+    value: MMB4
+  - name: ABP_MML_PARTY_CD
+    value: '86888080'
+  - name: ABP_XML_BRANCH
+    value: '9090990'
+  - name: ABP_XML_USER_ID
+    value: MP01_USER
+  - name: ABP_XML_SERVICE_CODE
+    value: MHA00000
+  - name: ABP_XML_EMAIL_REG_STMT_INQ
+    value: http://quary.service.dda.cppx.cz..com/
+  - name: ABP_XML_SOAP_ENV
+    value: http:/services.org/serevic4
+  - name: ABP_XML_INQ
+    value: http://quary.service.dda.cppx.cz..com/
+  - name: ABP_XML_CON
+    value: http://mtext.app.dc.onoff.com
+  - name: ABP_XML_EXC
+    value: http://ception.bag.dc.onoff.com
+  - name: ABP_XML_MMO
+    value: http://mto.servie.bag.work.mc.onoff.com
+  - name: ABP_XML_COOM
+    value: http://domain.work.dc.onoff.com
+  - name: ABP_XML_DAT
+    value: http://servicetype.dc.onoff.com
+containerPort: 9090
+data:
+  enabled: true
+serviceAccount:
+  create: false
+  annotations: {}
+  name: ''
+k8s_serviceaccount:
+  enabled: true
+  k8s_serviceAccountName: service-arc
+podAnnotations:
+  sidecar.istio.io/proxyCPU: 50m
+  sidecar.istio.io/proxyMemory: 56Mi
+  sidecar.istio.io/proxyMemoryLimit: 10Mi
+  sidecar.istio.io/proxyCPULimit: 20m
+  cloud.google.com/backend-config: '{"dev1": "http-dc-service-use-v1"}'
+  cloud.google.com/neg: '{"ingress": true}'
+serviceAnnotations:
+  cloud.google.com/backend-config: '{"dev1": "http-dc-service-use"}'
+  cloud.google.com/neg: '{"ingress": true}'
+  app.kubernetes.io/managed-by: Helm
+  meta.helm.sh/release-namespace: dev1
+service:
+  name: service-use
+  type: ClusterIP
+  ports:
+  - name: http
+    port: 99
+    targetPort: 9090
+ingress:
+  enabled: true
+  className: ''
+  annotations:
+    cloud.google.com/backend-config: '{"dev1": "http-hc-service-use"}'
+    cloud.google.com/neg: '{"ingress": true}'
+  hosts:
+  - host: service-use
+    paths:
+    - path: /service-use
+      pathType: Prefix
+  tls: []
+resources:
+  limits:
+    memory: 128Mi
+    cpu: 100m
+  requests:
+    memory: 28Mi
+    cpu: 19m
+autoscaling:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 20
+vsconfig:
+  enabled: true
+  gateway: dev1/asm-gateway
+  hostname: '*'
+  value: /service-use
+  port: 60
+backendconfig:
+  enabled: true
+  namespace: dev1
+  timeoutSec: 20
+  healthCheck:
+    requestPath: /health
+    port: 9090
+    type: HTTP
+  securityPolicy:
+    name: helm-fw-policy
+pdb:
+  minAvailable: 0
+  enabled: true
+nodeSelector: {}
+tolerations: []
+affinity: {}
+topologySpreadConstraints:
+- labelSelector:
+    matchExpressions:
+    - key: app
+      operator: In
+      values:
+      - service-use
+  maxSkew: 1
+  topologyKey: topology.kubernetes.io/zone
+  whenUnsatisfiable: ScheduleAnyway
+- labelSelector:
+    matchExpressions:
+    - key: app
+      operator: In
+      values:
+      - service-use
+  maxSkew: 1
+  topologyKey: kubernetes.io/hostname
+  whenUnsatisfiable: ScheduleAnyway
+volume:
+  enabled: false
+secrets:
+  enabled: false
+readinessProbe: {}
+livenessProbe: {}

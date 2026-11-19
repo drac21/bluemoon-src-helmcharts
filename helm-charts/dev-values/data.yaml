@@ -1,0 +1,17 @@
+'#': Per-microservice ConfigMap data. Add service-specific key/value pairs under values.
+microservices:
+  service-auth:
+    enabled: true
+    values: {}
+  service-admin:
+    enabled: true
+    values: {}
+  service-upi:
+    enabled: true
+    values: {}
+  service-user:
+    enabled: true
+    values: {}
+  service-use:
+    enabled: true
+    values: {}

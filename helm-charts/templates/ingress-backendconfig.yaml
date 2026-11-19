@@ -1,0 +1,15 @@
+{{- if .Values.backendconfig.enabled }}
+apiVersion: cloud.google.com/v1
+kind: BackendConfig
+metadata:
+  name: http-hc-{{ include "cellphone-app.fullname" . }}
+  namespace: {{ .Values.backendconfig.namespace | quote }}
+spec:
+  timeoutSec: {{ .Values.backendconfig.timeoutSec }}
+  healthCheck:
+    requestPath: {{ .Values.backendconfig.healthCheck.requestPath | quote }}
+    port: {{ .Values.backendconfig.healthCheck.port }}
+    type: {{ .Values.backendconfig.healthCheck.type | quote }}
+  securityPolicy:
+    name: {{ .Values.backendconfig.securityPolicy.name | quote }}
+{{- end }}

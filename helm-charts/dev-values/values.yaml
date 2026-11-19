@@ -1,0 +1,41 @@
+# Shared defaults for all microservices.
+# Override these values in the individual service YAML files.
+namespace: default
+
+imagePullSecrets:
+  - name: quay-registry-secret
+
+serviceAccount:
+  create: true
+  name: ""
+
+common:
+  replicas: 2
+  imagePullPolicy: IfNotPresent
+  service:
+    type: ClusterIP
+    port: 80
+    targetPort: 8080
+  ingress:
+    enabled: false
+    className: nginx
+    annotations: {}
+    host: example.local
+    path: /
+    pathType: Prefix
+    tls: []
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+  autoscaling:
+    enabled: false
+    minReplicas: 2
+    maxReplicas: 5
+    targetCPUUtilizationPercentage: 75
+    targetMemoryUtilizationPercentage: 80
+
+microservices: {}

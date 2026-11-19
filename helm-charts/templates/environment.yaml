@@ -1,0 +1,16 @@
+{{- range $serviceName, $config := (.Values.microservices | default dict) }}
+{{- if ($config.environment.enabled | default false) }}
+{{- $variables := ($config.environment.variables | default list) }}
+{{- if gt (len $variables) 0 }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "microservices.fullname" (dict "root" $ "serviceName" (printf "%s-environment" $serviceName)) }}
+data:
+  {{- range $variables }}
+  {{ .name }}: {{ .value | toString | quote }}
+  {{- end }}
+---
+{{- end }}
+{{- end }}
+{{- end }}

@@ -1,0 +1,167 @@
+'#': Per-microservice environment variables copied from each service values file.
+microservices:
+  service-auth:
+    enabled: true
+    variables:
+    - name: APP_ID
+      value: service-auth
+    - name: ABP_XML_FINACE_CODE
+      value: 08
+    - name: ABP_MML_CHANNEL
+      value: MMB4
+    - name: ABP_MML_PARTY_CD
+      value: '86888080'
+    - name: ABP_XML_BRANCH
+      value: '9090990'
+    - name: ABP_XML_USER_ID
+      value: MP01_USER
+    - name: ABP_XML_SERVICE_CODE
+      value: MHA00000
+    - name: ABP_XML_EMAIL_REG_STMT_INQ
+      value: http://quary.service.dda.cppx.cz..com/
+    - name: ABP_XML_SOAP_ENV
+      value: http:/services.org/serevic4
+    - name: ABP_XML_INQ
+      value: http://quary.service.dda.cppx.cz..com/
+    - name: ABP_XML_CON
+      value: http://mtext.app.dc.onoff.com
+    - name: ABP_XML_EXC
+      value: http://ception.bag.dc.onoff.com
+    - name: ABP_XML_MMO
+      value: http://mto.servie.bag.work.mc.onoff.com
+    - name: ABP_XML_COOM
+      value: http://domain.work.dc.onoff.com
+    - name: ABP_XML_DAT
+      value: http://servicetype.dc.onoff.com
+  service-admin:
+    enabled: true
+    variables:
+    - name: APP_ID
+      value: service-admin
+    - name: ABP_XML_FINACE_CODE
+      value: 08
+    - name: ABP_MML_CHANNEL
+      value: MMB4
+    - name: ABP_MML_PARTY_CD
+      value: '86888080'
+    - name: ABP_XML_BRANCH
+      value: '9090990'
+    - name: ABP_XML_USER_ID
+      value: MP01_USER
+    - name: ABP_XML_SERVICE_CODE
+      value: MHA00000
+    - name: ABP_XML_EMAIL_REG_STMT_INQ
+      value: http://quary.service.dda.cppx.cz..com/
+    - name: ABP_XML_SOAP_ENV
+      value: http:/services.org/serevic4
+    - name: ABP_XML_INQ
+      value: http://quary.service.dda.cppx.cz..com/
+    - name: ABP_XML_CON
+      value: http://mtext.app.dc.onoff.com
+    - name: ABP_XML_EXC
+      value: http://ception.bag.dc.onoff.com
+    - name: ABP_XML_MMO
+      value: http://mto.servie.bag.work.mc.onoff.com
+    - name: ABP_XML_COOM
+      value: http://domain.work.dc.onoff.com
+    - name: ABP_XML_DAT
+      value: http://servicetype.dc.onoff.com
+  service-upi:
+    enabled: true
+    variables:
+    - name: APP_ID
+      value: service-upi
+    - name: ABP_XML_FINACE_CODE
+      value: 08
+    - name: ABP_MML_CHANNEL
+      value: MMB4
+    - name: ABP_MML_PARTY_CD
+      value: '86888080'
+    - name: ABP_XML_BRANCH
+      value: '9090990'
+    - name: ABP_XML_USER_ID
+      value: MP01_USER
+    - name: ABP_XML_SERVICE_CODE
+      value: MHA00000
+    - name: ABP_XML_EMAIL_REG_STMT_INQ
+      value: http://quary.service.dda.cppx.cz..com/
+    - name: ABP_XML_SOAP_ENV
+      value: http:/services.org/serevic4
+    - name: ABP_XML_INQ
+      value: http://quary.service.dda.cppx.cz..com/
+    - name: ABP_XML_CON
+      value: http://mtext.app.dc.onoff.com
+    - name: ABP_XML_EXC
+      value: http://ception.bag.dc.onoff.com
+    - name: ABP_XML_MMO
+      value: http://mto.servie.bag.work.mc.onoff.com
+    - name: ABP_XML_COOM
+      value: http://domain.work.dc.onoff.com
+    - name: ABP_XML_DAT
+      value: http://servicetype.dc.onoff.com
+  service-user:
+    enabled: true
+    variables:
+    - name: APP_ID
+      value: service-user
+    - name: ABP_XML_FINACE_CODE
+      value: 08
+    - name: ABP_MML_CHANNEL
+      value: MMB4
+    - name: ABP_MML_PARTY_CD
+      value: '86888080'
+    - name: ABP_XML_BRANCH
+      value: '9090990'
+    - name: ABP_XML_USER_ID
+      value: MP01_USER
+    - name: ABP_XML_SERVICE_CODE
+      value: MHA00000
+    - name: ABP_XML_EMAIL_REG_STMT_INQ
+      value: http://quary.service.dda.cppx.cz..com/
+    - name: ABP_XML_SOAP_ENV
+      value: http:/services.org/serevic4
+    - name: ABP_XML_INQ
+      value: http://quary.service.dda.cppx.cz..com/
+    - name: ABP_XML_CON
+      value: http://mtext.app.dc.onoff.com
+    - name: ABP_XML_EXC
+      value: http://ception.bag.dc.onoff.com
+    - name: ABP_XML_MMO
+      value: http://mto.servie.bag.work.mc.onoff.com
+    - name: ABP_XML_COOM
+      value: http://domain.work.dc.onoff.com
+    - name: ABP_XML_DAT
+      value: http://servicetype.dc.onoff.com
+  service-use:
+    enabled: true
+    variables:
+    - name: APP_ID
+      value: service-use
+    - name: ABP_XML_FINACE_CODE
+      value: 08
+    - name: ABP_MML_CHANNEL
+      value: MMB4
+    - name: ABP_MML_PARTY_CD
+      value: '86888080'
+    - name: ABP_XML_BRANCH
+      value: '9090990'
+    - name: ABP_XML_USER_ID
+      value: MP01_USER
+    - name: ABP_XML_SERVICE_CODE
+      value: MHA00000
+    - name: ABP_XML_EMAIL_REG_STMT_INQ
+      value: http://quary.service.dda.cppx.cz..com/
+    - name: ABP_XML_SOAP_ENV
+      value: http:/services.org/serevic4
+    - name: ABP_XML_INQ
+      value: http://quary.service.dda.cppx.cz..com/
+    - name: ABP_XML_CON
+      value: http://mtext.app.dc.onoff.com
+    - name: ABP_XML_EXC
+      value: http://ception.bag.dc.onoff.com
+    - name: ABP_XML_MMO
+      value: http://mto.servie.bag.work.mc.onoff.com
+    - name: ABP_XML_COOM
+      value: http://domain.work.dc.onoff.com
+    - name: ABP_XML_DAT
+      value: http://servicetype.dc.onoff.com

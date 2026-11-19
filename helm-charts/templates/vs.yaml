@@ -1,0 +1,25 @@
+{{- if .Values.vsconfig.enabled }}
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: {{ include "cellphone-app.fullname" . }}-vs
+  labels:
+    {{- include "cellphone-app.labels" . | nindent 4 }}
+spec:
+  hosts:
+    - {{ .Values.vsconfig.hostname | quote }}
+  gateways:
+    - {{ .Values.vsconfig.gateway }}
+  http:
+    - match:
+        - uri:
+            prefix: {{ .Values.vsconfig.value | quote }}
+      {{- if .Values.vsconfig.timeout }}
+      timeout: {{ .Values.vsconfig.timeout }}
+      {{- end }}
+      route:
+        - destination:
+            host: {{ include "cellphone-app.fullname" . }}
+            port:
+              number: {{ .Values.vsconfig.port }}
+{{- end }}
