@@ -2,9 +2,9 @@
 apiVersion: policy/v1
 kind: PodDisruptionBudget
 metadata:
-  name: {{ include "cellphone-app.fullname" . }}
+  name: {{ include "television-app.fullname" . }}
   labels:
-    {{- include "cellphone-app.labels" . | nindent 4 }}
+    {{- include "television-app.labels" . | nindent 4 }}
 spec:
   {{- if hasKey .Values.pdb "minAvailable" }}
   minAvailable: {{ .Values.pdb.minAvailable }}
@@ -13,5 +13,5 @@ spec:
   {{- end }}
   selector:
     matchLabels:
-      {{- include "cellphone-app.selectorLabels" . | nindent 6 }}
+      {{- include "television-app.selectorLabels" . | nindent 6 }}
 {{- end }}
