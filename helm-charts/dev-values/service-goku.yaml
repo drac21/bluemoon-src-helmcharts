@@ -5,8 +5,8 @@ Release:
   Maintainer: service-goku-maintainer
   name: service-goku-v1
 image:
-  image_name: samplerepo.onecx.com/FINACEing/service-goku:8.0.0-b14-release-r8.0.0-v1
-  repository: samplerepo.onecx.com/FINACEing/service-goku
+  image_name: television-sr
+  repository: samplerepo.onecx.com/FINACE/service-goku
   pullPolicy: Always
   tag: 0.0.1
 imagePullSecrets:
