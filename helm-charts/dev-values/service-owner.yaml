@@ -1,22 +1,22 @@
 replicaCount: 1
 app:
-  name: service-admin-v1
+  name: service-owner-v1
 Release:
-  Maintainer: service-admin-maintainer
-  name: service-admin-v1
+  Maintainer: service-owner-maintainer
+  name: service-owner-v1
 image:
-  image_name: samplerepo.onecx.com/FINACEing/service-admin:8.0.0-b14-release-r8.0.0-v1
-  repository: samplerepo.onecx.com/FINACEing/service-admin
+  image_name: samplerepo.onecx.com/FINACEing/service-owner:8.0.0-b14-release-r8.0.0-v1
+  repository: samplerepo.onecx.com/FINACEing/service-owner
   pullPolicy: Always
   tag: 0.0.1
 imagePullSecrets:
 - name: setrvice-rg
-nameOverride: service-admin
-fullnameOverride: service-admin
+nameOverride: service-owner
+fullnameOverride: service-owner
 env:
-  service_admin_v1:
+  service_owner_v1:
   - name: APP_ID
-    value: service-admin
+    value: service-owner
   - name: ABP_XML_FINACE_CODE
     value: 08
   - name: ABP_MML_CHANNEL
@@ -60,15 +60,15 @@ podAnnotations:
   sidecar.istio.io/proxyMemory: 56Mi
   sidecar.istio.io/proxyMemoryLimit: 10Mi
   sidecar.istio.io/proxyCPULimit: 20m
-  cloud.google.com/backend-config: '{"dev1": "http-dc-service-admin-v1"}'
+  cloud.google.com/backend-config: '{"dev1": "http-dc-service-owner-v1"}'
   cloud.google.com/neg: '{"ingress": true}'
 serviceAnnotations:
-  cloud.google.com/backend-config: '{"dev1": "http-dc-service-admin"}'
+  cloud.google.com/backend-config: '{"dev1": "http-dc-service-owner"}'
   cloud.google.com/neg: '{"ingress": true}'
   app.kubernetes.io/managed-by: Helm
   meta.helm.sh/release-namespace: dev1
 service:
-  name: service-admin
+  name: service-owner
   type: ClusterIP
   ports:
   - name: http
@@ -78,12 +78,12 @@ ingress:
   enabled: true
   className: ''
   annotations:
-    cloud.google.com/backend-config: '{"dev1": "http-hc-service-admin"}'
+    cloud.google.com/backend-config: '{"dev1": "http-hc-service-owner"}'
     cloud.google.com/neg: '{"ingress": true}'
   hosts:
-  - host: service-admin
+  - host: service-owner
     paths:
-    - path: /service-admin
+    - path: /service-owner
       pathType: Prefix
   tls: []
 resources:
@@ -102,7 +102,7 @@ vsconfig:
   enabled: true
   gateway: dev1/asm-gateway
   hostname: '*'
-  value: /service-admin
+  value: /service-owner
   port: 60
 backendconfig:
   enabled: true
@@ -126,7 +126,7 @@ topologySpreadConstraints:
     - key: app
       operator: In
       values:
-      - service-admin
+      - service-owner
   maxSkew: 1
   topologyKey: topology.kubernetes.io/zone
   whenUnsatisfiable: ScheduleAnyway
@@ -135,7 +135,7 @@ topologySpreadConstraints:
     - key: app
       operator: In
       values:
-      - service-admin
+      - service-owner
   maxSkew: 1
   topologyKey: kubernetes.io/hostname
   whenUnsatisfiable: ScheduleAnyway
