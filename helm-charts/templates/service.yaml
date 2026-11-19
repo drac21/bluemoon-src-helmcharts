@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: {{ .Values.service.name }}
   labels:
-    {{- include "cellphone-app.labels" . | nindent 4 }}
+    {{- include "television-app.labels" . | nindent 4 }}
   {{- with .Values.serviceAnnotations }}
   annotations:
     {{- toYaml . | nindent 4 }}
@@ -18,4 +18,4 @@ spec:
       protocol: {{ .protocol | default "TCP" }}
     {{- end }}
   selector:
-    {{- include "cellphone-app.selectorLabels" . | nindent 4 }}
+    {{- include "television-app.selectorLabels" . | nindent 4 }}
