@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "tv-app.fullname" . }}
+  name: {{ include "television-app.fullname" . }}
   labels:
-    {{- include "tv-app.labels" . | nindent 4 }}
+    {{- include "television-app.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "tv-app.selectorLabels" . | nindent 6 }}
+      {{- include "television-app.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       annotations:
@@ -18,7 +18,7 @@ spec:
         {{- toYaml . | nindent 8 }}
         {{- end }}
       labels:
-        {{- include "tv-app.selectorLabels" . | nindent 8 }}
+        {{- include "television-app.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.topologySpreadConstraints }}
       topologySpreadConstraints: 
@@ -37,7 +37,7 @@ spec:
       {{- if .Values.k8s_serviceaccount.enabled }}
       serviceAccountName: {{ .Values.k8s_serviceaccount.k8s_serviceAccountName }}
       {{- else if .Values.serviceAccount.create }}
-      serviceAccountName: {{ include "tv-app.serviceAccountName" . }}
+      serviceAccountName: {{ include "television-app.serviceAccountName" . }}
       {{- else if .Values.serviceAccount.name }}
       serviceAccountName: {{ .Values.serviceAccount.name }}
       {{- end }}
@@ -49,7 +49,7 @@ spec:
         seccompProfile:
           type: RuntimeDefault
       containers:
-        - name: {{ include "tv-app.fullname" . }}
+        - name: {{ include "television-app.fullname" . }}
           image: "{{ .Values.image.image_name }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           securityContext:
