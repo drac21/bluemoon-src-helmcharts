@@ -2,9 +2,9 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: {{ include "cellphone-app.fullname" . }}-vs
+  name: {{ include "television-app.fullname" . }}-vs
   labels:
-    {{- include "cellphone-app.labels" . | nindent 4 }}
+    {{- include "television-app.labels" . | nindent 4 }}
 spec:
   hosts:
     - {{ .Values.vsconfig.hostname | quote }}
@@ -19,7 +19,7 @@ spec:
       {{- end }}
       route:
         - destination:
-            host: {{ include "cellphone-app.fullname" . }}
+            host: {{ include "television-app.fullname" . }}
             port:
               number: {{ .Values.vsconfig.port }}
 {{- end }}
