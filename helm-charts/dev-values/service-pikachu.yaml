@@ -1,22 +1,22 @@
 replicaCount: 1
 app:
-  name: service-use-v1
+  name: service-pikachu-v1
 Release:
-  Maintainer: service-use-maintainer
-  name: service-use-v1
+  Maintainer: service-pikachu-maintainer
+  name: service-pikachu-v1
 image:
-  image_name: samplerepo.onecx.com/FINACEing/service-use:8.0.0-b14-release-r8.0.0-v1
-  repository: samplerepo.onecx.com/FINACEing/service-use
+  image_name: samplerepo.onecx.com/FINACEing/service-pikachu:8.0.0-b14-release-r8.0.0-v1
+  repository: samplerepo.onecx.com/FINACEing/service-pikachu
   pullPolicy: Always
   tag: 0.0.1
 imagePullSecrets:
 - name: setrvice-rg
-nameOverride: service-use
-fullnameOverride: service-use
+nameOverride: service-pikachu
+fullnameOverride: service-pikachu
 env:
   service_use_v1:
   - name: APP_ID
-    value: service-use
+    value: service-pikachu
   - name: ABP_XML_FINACE_CODE
     value: 08
   - name: ABP_MML_CHANNEL
@@ -60,15 +60,15 @@ podAnnotations:
   sidecar.istio.io/proxyMemory: 56Mi
   sidecar.istio.io/proxyMemoryLimit: 10Mi
   sidecar.istio.io/proxyCPULimit: 20m
-  cloud.google.com/backend-config: '{"dev1": "http-dc-service-use-v1"}'
+  cloud.google.com/backend-config: '{"dev1": "http-dc-service-pikachu-v1"}'
   cloud.google.com/neg: '{"ingress": true}'
 serviceAnnotations:
-  cloud.google.com/backend-config: '{"dev1": "http-dc-service-use"}'
+  cloud.google.com/backend-config: '{"dev1": "http-dc-service-pikachu"}'
   cloud.google.com/neg: '{"ingress": true}'
   app.kubernetes.io/managed-by: Helm
   meta.helm.sh/release-namespace: dev1
 service:
-  name: service-use
+  name: service-pikachu
   type: ClusterIP
   ports:
   - name: http
@@ -78,12 +78,12 @@ ingress:
   enabled: true
   className: ''
   annotations:
-    cloud.google.com/backend-config: '{"dev1": "http-hc-service-use"}'
+    cloud.google.com/backend-config: '{"dev1": "http-hc-service-pikachu"}'
     cloud.google.com/neg: '{"ingress": true}'
   hosts:
-  - host: service-use
+  - host: service-pikachu
     paths:
-    - path: /service-use
+    - path: /service-pikachu
       pathType: Prefix
   tls: []
 resources:
@@ -102,7 +102,7 @@ vsconfig:
   enabled: true
   gateway: dev1/asm-gateway
   hostname: '*'
-  value: /service-use
+  value: /service-pikachu
   port: 60
 backendconfig:
   enabled: true
@@ -126,7 +126,7 @@ topologySpreadConstraints:
     - key: app
       operator: In
       values:
-      - service-use
+      - service-pikachu
   maxSkew: 1
   topologyKey: topology.kubernetes.io/zone
   whenUnsatisfiable: ScheduleAnyway
@@ -135,7 +135,7 @@ topologySpreadConstraints:
     - key: app
       operator: In
       values:
-      - service-use
+      - service-pikachu
   maxSkew: 1
   topologyKey: kubernetes.io/hostname
   whenUnsatisfiable: ScheduleAnyway
